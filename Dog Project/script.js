@@ -8,9 +8,28 @@ var requestOptions = {
     method: 'GET',
 };
 
-const editedURL = URL + 1;
+const editedURL = URL;
 
-fetch(editedURL, requestOptions)
+
+    fetch(editedURL, requestOptions)
     .then(response => response.json())
-    .then(data => console.log(data.name))
-    .catch(error => console.log('error', error));
+    .then(data => {
+        renderDogs(data); //Renders data
+    })
+    .catch(error =>
+        console.log(error)) //Catches errors if they arise
+
+
+function renderDogs(dogs) {
+
+dogs.forEach(dog => {
+    console.log(dog.name);
+
+    $('#dogs-div').append(
+
+        `<h3>${dog.name}</h1>`
+
+    )
+});
+
+}
